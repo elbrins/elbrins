@@ -1,0 +1,123 @@
+import operator
+
+
+def calc(st, relate, nd):
+    return relate(st, nd)
+
+
+name = input("Hello Please Enter your name: ")
+print(f"Hello {name}")
+
+
+def true():
+    global continu, contin, conti, cont, con, nums, num
+    continu = True
+    contin = True
+    conti = True
+    cont = True
+    con = True
+    nums = True
+    num = True
+
+
+true()
+
+
+def false():
+    global continu, contin, conti, cont, con, nums, num
+    continu = False
+    contin = False
+    conti = False
+    cont = False
+    con = False
+    nums = False
+    num = False
+
+
+def calc(num1, op, num2):
+    global peep
+
+    def peep(inp, relate, cut):
+        true()
+        global num, nums, contin
+        while nums == True:
+            try:
+                inp = input("Enter the first number: ")
+                try:
+                    inp = int(inp)
+                    false()
+                    num = True
+                except:
+                    inp = float(inp)
+                    false()
+                    num = True
+            except:
+                print("Excpected Number")
+                false()
+                nums = True
+            while num == True:
+                try:
+                    cut = input("Enter the second number: ")
+                    try:
+                        cut = int(cut)
+                        false()
+                        contin = True
+                    except:
+                        cut = float(cut)
+                        false()
+                        contin = True
+                except:
+                    print("Excpected Number")
+                    false()
+                    num = True
+        true()
+
+        return relate(inp, cut)
+    print(peep(num1, op, num2))
+
+
+def op(ope):
+    nums = True
+    while nums == True:
+        calc(1, ope, 1)
+        true()
+        nums = False
+
+
+while continu == True:
+    true()
+    print("1.Add\n2.Subtract\n3.Multiply\n4.Divide\n5.Exponent\n6.Modulus\n7.Floor Division")
+    while conti == True:
+        c = input("Choose an operation from 1 to 7: ")
+        true()
+        while con == True:
+            if c == "1":
+                op(operator.add)
+            elif c == "2":
+                op(operator.sub)
+            elif c == "3":
+                op(operator.mul)
+            elif c == "4":
+                op(operator.truediv)
+            elif c == "5":
+                op(operator.pow)
+            elif c == "6":
+                op(operator.mod)
+            elif c == "7":
+                op(operator.floordiv)
+            else:
+                print("Excpected Numbers from 1 to 7")
+                false()
+                conti = True
+
+            while contin == True:
+                inp = input("Wanna continue?: (Y/N) ")
+                if inp == "Y" or inp == "y":
+                    false()
+                    continu = True
+                elif inp == "N" or inp == "n":
+                    quit()
+                else:
+                    print("Excpected (Y/N)")
+                    false()
+                    contin = True
